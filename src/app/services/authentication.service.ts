@@ -19,7 +19,6 @@ export class AuthenticationService {
     } else {
       this.router.navigateByUrl('user/signin');
     }
-    this.user.subscribe((value) => console.log(value));
   }
 
   signout() {
@@ -45,7 +44,6 @@ export class AuthenticationService {
 
   isLoggedIn(): boolean {
     const result = localStorage.getItem('access_token') !== null;
-    console.log(result);
     return result;
   }
 }

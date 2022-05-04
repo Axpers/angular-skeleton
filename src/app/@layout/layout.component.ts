@@ -24,7 +24,6 @@ export class LayoutComponent implements OnInit {
   ngOnInit() {
     this.authService.getUser().subscribe((user) => {
       this.isLoggedIn = user !== undefined;
-      console.log('Inside layout being subscribed');
     });
   }
 
