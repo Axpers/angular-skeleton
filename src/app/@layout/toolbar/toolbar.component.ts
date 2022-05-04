@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
@@ -11,13 +11,17 @@ import { NavService } from 'src/app/services/nav.service';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
+  user: User;
+
   constructor(
-    private auth: AuthenticationService,
+    private authService: AuthenticationService,
     private dialog: MatDialog,
     public navService: NavService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.getUser().subscribe((value) => (this.user = value));
+  }
 
   logoutDialog() {
     this.dialog.open(LogoutDialogComponent);
