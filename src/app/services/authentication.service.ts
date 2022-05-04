@@ -16,6 +16,8 @@ export class AuthenticationService {
         id: 1,
         name: localStorage.getItem('access_token'),
       });
+    } else {
+      this.router.navigateByUrl('user/signin');
     }
     this.user.subscribe((value) => console.log(value));
   }
@@ -42,6 +44,8 @@ export class AuthenticationService {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('access_token');
+    const result = localStorage.getItem('access_token') !== null;
+    console.log(result);
+    return result;
   }
 }
