@@ -1,0 +1,66 @@
+@import "~@angular/material/theming";
+
+$background: mat-color($mat-blue, 900);
+
+mat-toolbar {
+  height: 100%;
+  width: 100%;
+
+  background-color: $background;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+
+  .left-content,
+  .right-content {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    height: 100%;
+  }
+
+  .left-content {
+    a {
+      > img {
+        margin-left: 10px;
+        margin-right: 25px;
+      }
+
+      display: flex;
+      height: 100%;
+      align-items: center;
+      text-decoration: none;
+      margin-left: 10px;
+
+      div > p {
+        margin: -15px;
+        color: white;
+        font-size: 15px;
+      }
+    }
+
+    > .firstButton {
+      margin-left: -8px;
+    }
+  }
+
+  .right-content {
+    > .lastButton {
+      margin-left: 10px;
+    }
+
+    > div {
+      color: white;
+    }
+  }
+
+  button {
+    max-height: 90%;
+    color: white;
+    display: flex;
+    flex-shrink: 1;
+    justify-content: center;
+    align-items: center;
+    width: height;
+  }
+}

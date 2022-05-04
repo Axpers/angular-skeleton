@@ -1,0 +1,16 @@
+nav {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+
+  a {
+    width: 95%;
+    display: flex;
+    font-size: medium;
+    align-items: center;
+
+    mat-icon {
+      margin-right: 10px;
+    }
+  }
+}

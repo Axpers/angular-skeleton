@@ -1,0 +1,41 @@
+<mat-toolbar>
+  <div class="left-content">
+    <button
+      (click)="toggleSidenav()"
+      mat-icon-button
+      color="primary"
+      class="firstButton"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <a routerLink="/">
+      <img src="favicon.ico" alt="AngularLogo" />
+      <div>
+        <p>Angular</p>
+        <p>Skeleton</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="right-content">
+    <div>User name</div>
+
+    <button
+      mat-button
+      [matMenuTriggerFor]="auth"
+      mat-icon-button
+      color="primary"
+      class="lastButton"
+    >
+      <mat-icon>person_outline</mat-icon>
+    </button>
+
+    <mat-menu #auth="matMenu">
+      <button mat-menu-item (click)="logoutDialog()">
+        <mat-icon>logout</mat-icon>
+        Logout
+      </button>
+    </mat-menu>
+  </div>
+</mat-toolbar>

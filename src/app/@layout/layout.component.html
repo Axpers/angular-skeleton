@@ -1,0 +1,16 @@
+<div class="toolbar-container mat-elevation-z3" *ngIf="isLoggedIn">
+  <layout-toolbar class="full-width" *ngIf="isLoggedIn"></layout-toolbar>
+</div>
+
+<mat-sidenav-container [ngClass]="{ 'full-height': !isLoggedIn }" autosize>
+  <mat-sidenav #sidenav mode="side" opened class="mat-elevation-z5">
+    <layout-sidenav *ngIf="isLoggedIn"></layout-sidenav>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <main class="main-content" *ngIf="isLoggedIn">
+      <router-outlet></router-outlet>
+    </main>
+    <router-outlet *ngIf="!isLoggedIn"></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
