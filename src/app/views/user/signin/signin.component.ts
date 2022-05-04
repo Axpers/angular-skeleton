@@ -1,3 +1,4 @@
+import { UserSignin } from './../../../models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
@@ -10,19 +11,22 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class SigninComponent implements OnInit {
   signinForm = new FormGroup({
-    firstName: new FormControl('', Validators.required),
+    name: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
 
-  constructor(private auth: AuthenticationService, private router: Router) {}
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
-    // if (this.auth.isLoggedIn()) {
-    //   this.router.navigate(['/']);
-    // }
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/');
+    }
   }
 
-  login() {
-    console.log(this.signinForm.value);
+  login(): void {
+    this.authService.login(this.signinForm.value);
   }
 }
