@@ -1,1 +1,31 @@
-Signin component
+<div class="main-container">
+  <mat-card>
+    <mat-card-title>Angular skeleton</mat-card-title>
+
+    <mat-card-content>
+      <form [formGroup]="signinForm" autocomplete="off">
+        <mat-form-field appearance="outline">
+          <mat-label for="firstName">Username</mat-label>
+          <input
+            id="firstName"
+            formControlName="firstName"
+            matInput
+            placeholder="Username"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label for="password">Password</mat-label>
+          <input
+            id="password"
+            formControlName="password"
+            matInput
+            placeholder="Password"
+          />
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" [disabled]="!signinForm.valid" (click)="login()">Login</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
