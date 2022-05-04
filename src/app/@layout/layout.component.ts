@@ -1,5 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDrawerMode, MatSidenav } from '@angular/material/sidenav';
+import { MatSidenav } from '@angular/material/sidenav';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { NavService } from '../services/nav.service';
@@ -10,17 +11,22 @@ import { NavService } from '../services/nav.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-  sideNavOpened: boolean = true;
-  sideNavMode: MatDrawerMode = 'side';
   @ViewChild('sidenav') sidenav: MatSidenav;
 
   isLoggedIn: boolean;
 
-  constructor(auth: AuthenticationService, private navService: NavService) {
-    this.isLoggedIn = auth.isLoggedIn();
-  }
+  constructor(
+    private authService: AuthenticationService,
+    private navService: NavService,
+    private router: Router
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.authService.getUser().subscribe((user) => {
+      this.isLoggedIn = user !== undefined;
+      console.log('Inside layout being subscribed');
+    });
+  }
 
   ngAfterViewInit() {
     this.navService.sidenav = this.sidenav;

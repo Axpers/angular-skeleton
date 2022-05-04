@@ -1,3 +1,4 @@
+import { AuthGuard } from './guards/auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -20,7 +21,7 @@ import { RouterModule } from '@angular/router';
     LayoutModule,
     SharedModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

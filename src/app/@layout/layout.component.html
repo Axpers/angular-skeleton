@@ -3,8 +3,14 @@
 </div>
 
 <mat-sidenav-container [ngClass]="{ 'full-height': !isLoggedIn }" autosize>
-  <mat-sidenav #sidenav mode="side" opened class="mat-elevation-z5">
-    <layout-sidenav *ngIf="isLoggedIn"></layout-sidenav>
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    opened
+    class="mat-elevation-z5"
+    *ngIf="isLoggedIn"
+  >
+    <layout-sidenav></layout-sidenav>
   </mat-sidenav>
 
   <mat-sidenav-content>
