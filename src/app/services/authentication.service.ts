@@ -11,10 +11,7 @@ import { NavigationService } from './navigation.service';
 export class AuthenticationService {
   user = new BehaviorSubject<User>(undefined);
 
-  constructor(
-    private navigationService: NavigationService,
-    private router: Router
-  ) {
+  constructor(private navigationService: NavigationService) {
     if (localStorage.getItem('access_token')) {
       this.user.next({
         id: 1,
