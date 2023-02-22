@@ -17,8 +17,7 @@ export class LayoutComponent implements OnInit {
 
   constructor(
     private authService: AuthenticationService,
-    private navigationService: NavigationService,
-    private router: Router
+    private navigationService: NavigationService
   ) {}
 
   ngOnInit() {
@@ -28,6 +27,6 @@ export class LayoutComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.navigationService.sidenav = this.sidenav;
+    this.navigationService.setSidenav(this.sidenav);
   }
 }

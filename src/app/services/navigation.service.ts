@@ -6,22 +6,26 @@ import { NavigationItem } from '../models/nav-item.model';
 export class NavigationService {
   private navigationItems: NavigationItem[];
 
-  sidenav: MatSidenav;
+  private sidenav: MatSidenav;
 
   constructor() {
     this.setNavigationItems();
   }
 
-  closeNav() {
+  closeSidenav() {
     this.sidenav.close();
   }
 
-  openNav() {
+  openSidenav() {
     this.sidenav.open();
   }
 
-  toggleNav() {
+  toggleSidenav() {
     this.sidenav.toggle();
+  }
+
+  setSidenav(sidenav: MatSidenav): void {
+    this.sidenav = sidenav;
   }
 
   getNavigationItems() {

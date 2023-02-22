@@ -28,6 +28,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   toggleSidenav() {
-    this.navigationService.toggleNav();
+    this.navigationService.toggleSidenav();
   }
 }
