@@ -3,7 +3,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
-import { NavService } from 'src/app/services/nav.service';
+import { NavigationService } from 'src/app/services/nav.service';
 
 @Component({
   selector: 'layout-toolbar',
@@ -16,7 +16,7 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private authService: AuthenticationService,
     private dialog: MatDialog,
-    public navService: NavService
+    public navigationService: NavigationService
   ) {}
 
   ngOnInit() {
@@ -28,6 +28,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   toggleSidenav() {
-    this.navService.toggleNav();
+    this.navigationService.toggleNav();
   }
 }
