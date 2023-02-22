@@ -1,4 +1,4 @@
-import { UserSignin } from './../models/user.model';
+import { UserLogin } from './../models/user.model';
 import { User } from 'src/app/models/user.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -17,17 +17,17 @@ export class AuthenticationService {
         name: localStorage.getItem('access_token'),
       });
     } else {
-      this.router.navigateByUrl('user/signin');
+      this.router.navigateByUrl('auth/login');
     }
   }
 
   signout() {
     localStorage.removeItem('access_token');
-    this.router.navigateByUrl('user/signin');
+    this.router.navigateByUrl('auth/login');
     this.user.next(undefined);
   }
 
-  login(credentials: UserSignin) {
+  login(credentials: UserLogin) {
     this.user.next({
       id: 1,
       name: credentials.name,

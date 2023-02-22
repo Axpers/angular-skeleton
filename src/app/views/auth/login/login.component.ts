@@ -1,16 +1,16 @@
-import { UserSignin } from './../../../models/user.model';
+import { UserLogin } from '../../../models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-signin',
-  templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
 })
-export class SigninComponent implements OnInit {
-  signinForm = new FormGroup({
+export class LoginComponent implements OnInit {
+  loginFormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
   });
@@ -29,6 +29,6 @@ export class SigninComponent implements OnInit {
   }
 
   login(): void {
-    this.authService.login(this.signinForm.value);
+    this.authService.login(this.loginFormGroup.value);
   }
 }

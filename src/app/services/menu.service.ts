@@ -10,9 +10,9 @@ export class MenuService {
       link: '/',
     },
     {
-      label: 'Signin',
+      label: 'Login',
       icon: 'check',
-      link: '/user/signin',
+      link: '/auth/login',
     },
     {
       label: 'Menu 2',
