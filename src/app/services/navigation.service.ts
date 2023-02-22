@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
 import { NavigationItem } from '../models/nav-item.model';
 
 @Injectable()
 export class NavigationService {
   private navigationItems: NavigationItem[];
-
   private sidenav: MatSidenav;
+  private homeUrl = '';
+  private loginUrl = 'auth/login';
 
-  constructor() {
+  constructor(private router: Router) {
     this.setNavigationItems();
   }
 
@@ -32,17 +34,25 @@ export class NavigationService {
     return this.navigationItems;
   }
 
+  navigateToLogin(): void {
+    this.router.navigateByUrl(this.loginUrl);
+  }
+
+  navigateToHome(): void {
+    this.router.navigateByUrl(this.homeUrl);
+  }
+
   private setNavigationItems(): void {
     this.navigationItems = [
       {
         label: 'Home',
         icon: 'home',
-        link: '/',
+        link: `/${this.homeUrl}`,
       },
       {
         label: 'Login',
         icon: 'check',
-        link: '/auth/login',
+        link: `/${this.loginUrl}`,
       },
       {
         label: 'Menu 2',

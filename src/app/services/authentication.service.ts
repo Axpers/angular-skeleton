@@ -5,25 +5,29 @@ import { HttpClient } from '@angular/common/http';
 
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { NavigationService } from './navigation.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
   user = new BehaviorSubject<User>(undefined);
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(
+    private navigationService: NavigationService,
+    private router: Router
+  ) {
     if (localStorage.getItem('access_token')) {
       this.user.next({
         id: 1,
         name: localStorage.getItem('access_token'),
       });
     } else {
-      this.router.navigateByUrl('auth/login');
+      this.navigationService.navigateToLogin();
     }
   }
 
   signout() {
     localStorage.removeItem('access_token');
-    this.router.navigateByUrl('auth/login');
+    this.navigationService.navigateToLogin();
     this.user.next(undefined);
   }
 
@@ -35,7 +39,7 @@ export class AuthenticationService {
 
     localStorage.setItem('access_token', credentials.name);
 
-    this.router.navigateByUrl('/');
+    this.navigationService.navigateToHome();
   }
 
   getUser(): BehaviorSubject<User> {
