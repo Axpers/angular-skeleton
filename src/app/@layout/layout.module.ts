@@ -9,8 +9,7 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LogoutDialogComponent } from './toolbar/logout-dialog/logout-dialog.component';
 
-import { NavigationService } from '../services/nav.service';
-import { MenuService } from '../services/menu.service';
+import { NavigationService } from '../services/navigation.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +20,6 @@ import { MenuService } from '../services/menu.service';
   ],
   imports: [CommonModule, RouterModule, SharedModule],
   exports: [LayoutComponent],
-  providers: [NavigationService, MenuService],
+  providers: [NavigationService],
 })
 export class LayoutModule {}

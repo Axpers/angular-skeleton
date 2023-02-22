@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavItem } from 'src/app/models/nav-item.model';
-import { MenuService } from 'src/app/services/menu.service';
+import { NavigationItem } from 'src/app/models/nav-item.model';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'layout-sidenav',
@@ -8,11 +8,11 @@ import { MenuService } from 'src/app/services/menu.service';
   styleUrls: ['./sidenav.component.scss'],
 })
 export class SidenavComponent implements OnInit {
-  menus: NavItem[];
+  navigationItems: NavigationItem[];
 
-  constructor(private menuService: MenuService) {}
+  constructor(private navigationService: NavigationService) {}
 
   ngOnInit() {
-    this.menus = this.menuService.getMenus();
+    this.navigationItems = this.navigationService.getNavigationItems();
   }
 }

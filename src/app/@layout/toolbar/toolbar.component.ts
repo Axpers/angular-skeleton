@@ -3,7 +3,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
-import { NavigationService } from 'src/app/services/nav.service';
+import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
   selector: 'layout-toolbar',

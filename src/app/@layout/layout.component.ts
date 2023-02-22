@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 import { AuthenticationService } from '../services/authentication.service';
-import { NavigationService } from '../services/nav.service';
+import { NavigationService } from '../services/navigation.service';
 
 @Component({
   selector: 'app-layout',

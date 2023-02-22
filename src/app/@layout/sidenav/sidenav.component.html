@@ -1,12 +1,16 @@
 <mat-nav-list>
   <nav>
-    <a mat-button *ngFor="let menu of menus" [routerLink]="menu.link">
+    <a
+      mat-button
+      *ngFor="let navigationItem of navigationItems"
+      [routerLink]="navigationItem.link"
+    >
       <mat-icon>
-        {{ menu.icon }}
+        {{ navigationItem.icon }}
       </mat-icon>
 
       <span>
-        {{ menu.label }}
+        {{ navigationItem.label }}
       </span>
     </a>
   </nav>
