@@ -2,7 +2,7 @@ import { UserLogin } from '../../../models/user.model';
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation.service';
 
 @Component({
@@ -11,9 +11,9 @@ import { NavigationService } from 'src/app/services/navigation.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
+  loginFormGroup = new UntypedFormGroup({
+    name: new UntypedFormControl('', Validators.required),
+    password: new UntypedFormControl('', Validators.required),
   });
 
   hidePassword = true;
