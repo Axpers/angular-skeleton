@@ -1,4 +1,23 @@
+@use "@angular/material" as mat;
 @import "~@angular/material/prebuilt-themes/purple-green.css";
+
+@include mat.core();
+
+$my-app-primary: mat.define-palette(mat.$light-blue-palette, 500);
+$my-app-accent: mat.define-palette(mat.$light-green-palette, 500);
+$my-app-warn: mat.define-palette(mat.$red-palette, 500);
+
+$my-app-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $my-app-primary,
+      accent: $my-app-accent,
+      warn: $my-app-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($my-app-theme);
 
 body {
   margin: 0;
