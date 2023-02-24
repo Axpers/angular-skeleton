@@ -1,9 +1,6 @@
 import { UserLogin } from './../models/user.model';
 import { User } from 'src/app/models/user.model';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-
-import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { NavigationService } from './navigation.service';
 
