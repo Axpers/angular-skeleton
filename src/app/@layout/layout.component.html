@@ -4,17 +4,11 @@
 
 <ng-template #loggedIn>
   <div class="toolbar-container mat-elevation-z3">
-    <layout-toolbar class="full-width" *ngIf="isLoggedIn"></layout-toolbar>
+    <layout-toolbar *ngIf="isLoggedIn"></layout-toolbar>
   </div>
 
   <mat-sidenav-container autosize>
-    <mat-sidenav
-      #sidenav
-      mode="side"
-      opened
-      class="mat-elevation-z5"
-      *ngIf="isLoggedIn"
-    >
+    <mat-sidenav #sidenav mode="side" opened class="mat-elevation-z5">
       <layout-sidenav></layout-sidenav>
     </mat-sidenav>
 
