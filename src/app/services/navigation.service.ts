@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
-import { NavigationItem } from '../models/nav-item.model';
+
+export interface NavigationItem {
+  label: string;
+  icon?: string;
+  link?: string;
+}
 
 @Injectable()
 export class NavigationService {
