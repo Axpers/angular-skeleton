@@ -1,26 +1,29 @@
-.main-content {
+main {
   width: 100%;
   height: 100%;
 }
 
-.toolbar-container {
-  height: 7%;
-  position: relative;
-  z-index: 2;
-}
-
-mat-sidenav-container {
-  height: 93%;
-  width: 100%;
+.logged-in-main-container {
   display: flex;
+  flex-flow: column;
+  height: 100%;
 
-  mat-sidenav {
-    width: 15%;
+  .toolbar-container {
+    position: relative;
+    z-index: 2;
   }
 
-  mat-sidenav-content {
-    width: 85%;
-    flex: 1;
+  mat-sidenav-container {
     display: flex;
+    flex-grow: 1;
+
+    mat-sidenav {
+      width: 15%;
+    }
+
+    mat-sidenav-content {
+      width: 85%;
+      flex-grow: 1;
+    }
   }
 }

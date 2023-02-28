@@ -3,23 +3,25 @@
 </ng-container>
 
 <ng-template #loggedIn>
-  <div class="toolbar-container mat-elevation-z3">
-    <layout-toolbar *ngIf="isLoggedIn"></layout-toolbar>
+  <div class="logged-in-main-container">
+    <div class="toolbar-container mat-elevation-z3">
+      <layout-toolbar *ngIf="isLoggedIn"></layout-toolbar>
+    </div>
+
+    <mat-sidenav-container autosize>
+      <mat-sidenav #sidenav mode="side" opened class="mat-elevation-z5">
+        <layout-sidenav></layout-sidenav>
+      </mat-sidenav>
+
+      <mat-sidenav-content>
+        <ng-container *ngTemplateOutlet="mainContent"></ng-container>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
   </div>
-
-  <mat-sidenav-container autosize>
-    <mat-sidenav #sidenav mode="side" opened class="mat-elevation-z5">
-      <layout-sidenav></layout-sidenav>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <ng-container *ngTemplateOutlet="mainContent"></ng-container>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
 </ng-template>
 
 <ng-template #mainContent>
-  <main class="main-content">
+  <main>
     <router-outlet></router-outlet>
   </main>
 </ng-template>
