@@ -6,8 +6,6 @@ import { AuthenticationService } from './services/authentication.service';
   template: `<app-layout></app-layout>`,
 })
 export class AppComponent implements OnInit {
-  title = '`Title test ';
-
   isLoggedIn: boolean;
 
   constructor(auth: AuthenticationService) {

@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 
 export interface NavigationItem {
   label: string;
-  icon?: string;
-  link?: string;
+  icon: string;
+  link: string;
 }
 
 @Injectable()
