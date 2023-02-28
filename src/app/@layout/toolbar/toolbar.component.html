@@ -1,32 +1,22 @@
 <mat-toolbar>
   <div class="left-content">
-    <button
-      (click)="toggleSidenav()"
-      mat-icon-button
-      color="primary"
-      class="firstButton"
-    >
+    <button (click)="toggleSidenav()" mat-icon-button color="primary">
       <mat-icon>menu</mat-icon>
     </button>
 
     <a routerLink="/">
       <img src="../../../assets/favicon.ico" alt="AngularLogo" />
-      <div>
-        <p>Angular</p>
-        <p>Skeleton</p>
+      <div class="application-name">
+        <span>Angular</span>
+        <span>Skeleton</span>
       </div>
     </a>
   </div>
 
   <div class="right-content">
-    <div>{{ user.name }}</div>
+    <div class="user-information">{{ user.name }}</div>
 
-    <button
-      [matMenuTriggerFor]="auth"
-      mat-icon-button
-      color="primary"
-      class="lastButton"
-    >
+    <button [matMenuTriggerFor]="auth" mat-icon-button color="primary">
       <mat-icon>person_outline</mat-icon>
     </button>
 
