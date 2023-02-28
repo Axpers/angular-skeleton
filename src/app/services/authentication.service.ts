@@ -1,18 +1,22 @@
 import { UserLogin } from './../models/user.model';
 import { User } from 'src/app/models/user.model';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { NavigationService } from './navigation.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-  user = new BehaviorSubject<User>(undefined);
+  private readonly accessToken = 'accessToken';
+  private user$ = new Observable<User | null>();
 
   constructor(private navigationService: NavigationService) {
-    if (localStorage.getItem('access_token')) {
-      this.user.next({
+    const isAccessTokenDefined =
+      localStorage.getItem(this.accessToken) !== undefined;
+
+    if (isAccessTokenDefined) {
+      this.user$ = of({
         id: 1,
-        name: localStorage.getItem('access_token'),
+        name: localStorage.getItem(this.accessToken)!,
       });
     } else {
       this.navigationService.navigateToLogin();
@@ -20,30 +24,30 @@ export class AuthenticationService {
   }
 
   signout() {
-    localStorage.removeItem('access_token');
+    localStorage.removeItem(this.accessToken);
     this.navigationService.navigateToLogin();
-    this.user.next(undefined);
+    this.user$ = of(null);
   }
 
   login(credentials: UserLogin) {
-    this.user.next({
+    this.user$ = of({
       id: 1,
       name: credentials.name,
     });
 
-    localStorage.setItem('access_token', credentials.name);
+    localStorage.setItem(this.accessToken, credentials.name);
 
     this.navigationService.navigateToHome();
   }
 
-  getUser(): BehaviorSubject<User> {
-    return this.user;
+  getUser$(): Observable<User | null> {
+    return this.user$;
   }
 
   isLoggedIn(): boolean {
     return (
-      localStorage.getItem('access_token') !== null &&
-      localStorage.getItem('access_token') !== undefined
+      localStorage.getItem(this.accessToken) !== null &&
+      localStorage.getItem(this.accessToken) !== undefined
     );
   }
 }

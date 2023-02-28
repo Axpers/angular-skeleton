@@ -1,5 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { NavigationService } from '../services/navigation.service';
@@ -12,7 +14,7 @@ import { NavigationService } from '../services/navigation.service';
 export class LayoutComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
-  isLoggedIn: boolean;
+  isLoggedIn$: Observable<boolean>;
 
   constructor(
     private authService: AuthenticationService,
@@ -20,9 +22,9 @@ export class LayoutComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.getUser().subscribe((user) => {
-      this.isLoggedIn = user !== undefined;
-    });
+    this.isLoggedIn$ = this.authService
+      .getUser$()
+      .pipe(map((user) => user !== undefined));
   }
 
   ngAfterViewInit() {

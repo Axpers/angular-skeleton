@@ -1,11 +1,11 @@
-<ng-container *ngIf="!isLoggedIn; else loggedIn">
+<ng-container *ngIf="!(isLoggedIn$ | async); else loggedIn">
   <ng-container *ngTemplateOutlet="mainContent"></ng-container>
 </ng-container>
 
 <ng-template #loggedIn>
   <div class="logged-in-main-container">
     <div class="toolbar-container mat-elevation-z3">
-      <layout-toolbar *ngIf="isLoggedIn"></layout-toolbar>
+      <layout-toolbar></layout-toolbar>
     </div>
 
     <mat-sidenav-container autosize>

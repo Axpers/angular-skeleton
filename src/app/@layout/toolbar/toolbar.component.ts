@@ -4,6 +4,7 @@ import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'layout-toolbar',
@@ -11,7 +12,7 @@ import { NavigationService } from 'src/app/services/navigation.service';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  user: User;
+  user$: Observable<User | null>;
 
   constructor(
     private authService: AuthenticationService,
@@ -20,7 +21,7 @@ export class ToolbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.authService.getUser().subscribe((value) => (this.user = value));
+    this.user$ = this.authService.getUser$();
   }
 
   logoutDialog() {
