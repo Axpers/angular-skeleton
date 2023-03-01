@@ -1,16 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from './services/authentication.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `<app-layout></app-layout>`,
 })
-export class AppComponent implements OnInit {
-  isLoggedIn: boolean;
-
-  constructor(auth: AuthenticationService) {
-    this.isLoggedIn = auth.isLoggedIn();
-  }
-
-  ngOnInit() {}
-}
+export class AppComponent {}
