@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 import { AuthenticationService } from '../services/authentication.service';
 import { NavigationService } from '../services/navigation.service';
@@ -25,13 +25,16 @@ export class LayoutComponent implements OnInit {
     this.setIsLoggedIn();
   }
 
-  ngAfterViewInit() {
-    this.navigationService.setSidenav(this.sidenav);
+  private setIsLoggedIn(): void {
+    this.isLoggedIn$ = this.authService.getUser$().pipe(
+      map((user) => user !== null),
+      tap(() => this.setSidenav())
+    );
   }
 
-  private setIsLoggedIn(): void {
-    this.isLoggedIn$ = this.authService
-      .getUser$()
-      .pipe(map((user) => user !== null));
+  private setSidenav(): void {
+    setTimeout(() => {
+      this.navigationService.setSidenav(this.sidenav);
+    }, 1);
   }
 }
