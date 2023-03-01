@@ -4,27 +4,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: var(--dark-background);
 
   mat-card {
-    width: 400px;
-    display: flex;
-    flex-flow: column;
-    /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
-    mat-card-title {
-      margin-bottom: 20px;
-    }
-    /* TODO(mdc-migration): The following rule targets internal classes of card that may no longer apply for the MDC version. */
-    mat-card-content {
-      width: 100%;
-      display: flex;
-      justify-content: center;
+    margin: 5%;
 
+    mat-card-header {
+      padding: 16px;
+    }
+
+    mat-card-content {
       form {
         width: 100%;
         display: flex;
         flex-flow: wrap;
         justify-content: flex-end;
-        align-items: center;
+
         mat-form-field {
           width: 100%;
         }
