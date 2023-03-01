@@ -1,25 +1,25 @@
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
 import {
-  CanActivate,
   ActivatedRouteSnapshot,
+  CanActivateFn,
   RouterStateSnapshot,
 } from '@angular/router';
 import { NavigationService } from '../services/navigation.service';
 
-@Injectable()
-export class AuthGuard implements CanActivate {
-  constructor(
-    private authService: AuthenticationService,
-    private navigationService: NavigationService
-  ) {}
+export function authGuard(
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+): CanActivateFn {
+  const authService = inject(AuthenticationService);
+  const navigationService = inject(NavigationService);
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authService.isLoggedIn()) {
+  return () => {
+    if (authService.isLoggedIn()) {
       return true;
     } else {
-      this.navigationService.navigateToLogin();
+      navigationService.navigateToLogin();
       return false;
     }
-  }
+  };
 }
