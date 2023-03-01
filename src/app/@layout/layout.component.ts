@@ -22,12 +22,16 @@ export class LayoutComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.isLoggedIn$ = this.authService
-      .getUser$()
-      .pipe(map((user) => user !== undefined));
+    this.setIsLoggedIn();
   }
 
   ngAfterViewInit() {
     this.navigationService.setSidenav(this.sidenav);
+  }
+
+  private setIsLoggedIn(): void {
+    this.isLoggedIn$ = this.authService
+      .getUser$()
+      .pipe(map((user) => user !== null));
   }
 }
