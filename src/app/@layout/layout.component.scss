@@ -24,6 +24,9 @@ main {
     mat-sidenav-content {
       width: 85%;
       flex-grow: 1;
+
+      // Used to remove scroller on main tag
+      display: flex;
     }
   }
 }
