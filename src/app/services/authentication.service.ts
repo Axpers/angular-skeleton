@@ -1,7 +1,6 @@
-import { UserLogin } from './../models/user.model';
-import { User } from 'src/app/models/user.model';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { User, UserLogin } from '../models/user.model';
 import { NavigationService } from './navigation.service';
 
 @Injectable({ providedIn: 'root' })

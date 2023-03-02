@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
-import {
-  UntypedFormControl,
-  UntypedFormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation.service';
+import { UserLogin } from 'src/app/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +10,15 @@ import { NavigationService } from 'src/app/services/navigation.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup = new UntypedFormGroup({
-    name: new UntypedFormControl('', Validators.required),
-    password: new UntypedFormControl('', Validators.required),
+  loginFormGroup = new FormGroup({
+    name: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    password: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
   });
 
   hidePassword = true;
@@ -32,6 +35,14 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin(): void {
-    this.authService.login(this.loginFormGroup.value);
+    if (!this.loginFormGroup.valid) {
+      return;
+    }
+    const credentials: UserLogin = {
+      name: this.loginFormGroup.value.name!,
+      password: this.loginFormGroup.value.password!,
+    };
+
+    this.authService.login(credentials);
   }
 }
