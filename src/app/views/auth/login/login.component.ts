@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  login(): void {
+  handleLogin(): void {
     this.authService.login(this.loginFormGroup.value);
   }
 }

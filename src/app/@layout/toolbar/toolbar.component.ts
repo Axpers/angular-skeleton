@@ -24,11 +24,11 @@ export class ToolbarComponent implements OnInit {
     this.user$ = this.authService.getUser$();
   }
 
-  logoutDialog() {
+  handleLogout() {
     this.dialog.open(LogoutDialogComponent);
   }
 
-  toggleSidenav() {
+  handleSidenavToggle() {
     this.navigationService.toggleSidenav();
   }
 }

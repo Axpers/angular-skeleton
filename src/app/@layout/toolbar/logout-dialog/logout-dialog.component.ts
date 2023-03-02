@@ -16,7 +16,7 @@ export class LogoutDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  logout(): void {
+  handleLogout(): void {
     this.auth.signout();
     this.dialogRef.close();
   }
