@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AccessTokenResponse, UserLoginRequest } from '../models/auth.model';
 import { environment } from 'src/environments/environment';
-import { firstValueFrom } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthApiService {
@@ -10,12 +10,12 @@ export class AuthApiService {
 
   constructor(private readonly httpClient: HttpClient) {}
 
-  async login(credentials: UserLoginRequest): Promise<AccessTokenResponse> {
+  async login(
+    credentials: UserLoginRequest
+  ): Promise<Observable<AccessTokenResponse>> {
     const loginEndpoint = 'login';
     const url = `${environment.apiUrl}/${this.authEndpoint}/${loginEndpoint}`;
 
-    return firstValueFrom(
-      this.httpClient.post<AccessTokenResponse>(url, credentials)
-    );
+    return this.httpClient.post<AccessTokenResponse>(url, credentials);
   }
 }

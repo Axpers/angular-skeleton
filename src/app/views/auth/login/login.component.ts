@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation.service';
-import { UserLogin } from 'src/app/models/user.model';
+import { UserLoginRequest } from '../models/auth.model';
 
 @Component({
   selector: 'app-login',
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     if (!this.loginFormGroup.valid) {
       return;
     }
-    const credentials: UserLogin = {
+    const credentials: UserLoginRequest = {
       name: this.loginFormGroup.value.name!,
       password: this.loginFormGroup.value.password!,
     };

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { User, UserLogin } from '../models/user.model';
+import { User } from '../models/user.model';
+import { UserLoginRequest } from '../views/auth/models/auth.model';
 import { NavigationService } from './navigation.service';
 
 @Injectable({ providedIn: 'root' })
@@ -28,7 +29,7 @@ export class AuthenticationService {
     this.user$.next(null);
   }
 
-  login(credentials: UserLogin) {
+  login(credentials: UserLoginRequest) {
     this.user$.next({
       id: 1,
       name: credentials.name,
