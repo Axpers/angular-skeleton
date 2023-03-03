@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { User } from 'src/app/models/user.model';
 import { MatDialog } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { Observable } from 'rxjs';
+import { AuthCoreService } from 'src/app/views/auth/services/auth-core.service';
 
 @Component({
   selector: 'layout-toolbar',
@@ -15,7 +15,7 @@ export class ToolbarComponent implements OnInit {
   user$: Observable<User | null>;
 
   constructor(
-    private authService: AuthenticationService,
+    private authService: AuthCoreService,
     private dialog: MatDialog,
     public navigationService: NavigationService
   ) {}

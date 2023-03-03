@@ -1,7 +1,6 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-
-import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AuthCoreService } from 'src/app/views/auth/services/auth-core.service';
 
 @Component({
   selector: 'app-logout-dialog',
@@ -10,14 +9,14 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 })
 export class LogoutDialogComponent implements OnInit {
   constructor(
-    private auth: AuthenticationService,
+    private authService: AuthCoreService,
     private dialogRef: MatDialogRef<LogoutDialogComponent>
   ) {}
 
   ngOnInit(): void {}
 
   handleLogout(): void {
-    this.auth.signout();
+    this.authService.signout();
     this.dialogRef.close();
   }
 }

@@ -3,8 +3,8 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 
-import { AuthenticationService } from '../services/authentication.service';
 import { NavigationService } from '../services/navigation.service';
+import { AuthCoreService } from '../views/auth/services/auth-core.service';
 
 @Component({
   selector: 'app-layout',
@@ -17,7 +17,7 @@ export class LayoutComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
 
   constructor(
-    private authService: AuthenticationService,
+    private authService: AuthCoreService,
     private navigationService: NavigationService
   ) {}
 

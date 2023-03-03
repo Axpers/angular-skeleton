@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { UserLoginRequest } from '../models/auth.model';
+import { AuthCoreService } from '../services/auth-core.service';
 
 @Component({
   selector: 'app-login',
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
   hidePassword = true;
 
   constructor(
-    private authService: AuthenticationService,
-    private navigationService: NavigationService
+    private readonly authService: AuthCoreService,
+    private readonly navigationService: NavigationService
   ) {}
 
   ngOnInit() {
