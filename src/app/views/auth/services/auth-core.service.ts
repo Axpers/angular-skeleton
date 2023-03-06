@@ -30,16 +30,22 @@ export class AuthCoreService {
     this.user$.next(null);
   }
 
-  async login(credentials: UserLoginRequest) {
+  login(credentials: UserLoginRequest): void {
+    console.log('logging called');
+
+    localStorage.setItem(this.accessTokenKey, credentials.name);
+
+    // const token = await this.apiService.login(credentials);
+    // console.log(token);
+
+    // handle login failed case
+
+    // get user with token
+
     this.user$.next({
       id: 1,
       name: credentials.name,
     });
-
-    localStorage.setItem(this.accessTokenKey, credentials.name);
-
-    const token = await this.apiService.login(credentials);
-    console.log(token);
 
     this.navigationService.navigateToHome();
   }
@@ -55,7 +61,9 @@ export class AuthCoreService {
     );
   }
 
-  private setUser() {
+  private setUser(): void {
+    // Fetch user with token
+
     this.user$.next({
       id: 1,
       name: localStorage.getItem(this.accessTokenKey)!,

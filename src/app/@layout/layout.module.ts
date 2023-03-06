@@ -18,7 +18,7 @@ import { NavigationService } from '../services/navigation.service';
     LogoutDialogComponent,
   ],
   imports: [CommonModule, RouterModule, SharedModule],
-  exports: [LayoutComponent],
   providers: [NavigationService],
+  exports: [LayoutComponent],
 })
 export class LayoutModule {}

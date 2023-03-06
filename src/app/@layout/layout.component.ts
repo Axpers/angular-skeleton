@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
 
 import { NavigationService } from '../services/navigation.service';
 import { AuthCoreService } from '../views/auth/services/auth-core.service';
@@ -14,7 +12,7 @@ import { AuthCoreService } from '../views/auth/services/auth-core.service';
 export class LayoutComponent implements OnInit {
   @ViewChild('sidenav') sidenav: MatSidenav;
 
-  isLoggedIn$: Observable<boolean>;
+  isLoggedIn: boolean;
 
   constructor(
     private authService: AuthCoreService,
@@ -26,10 +24,13 @@ export class LayoutComponent implements OnInit {
   }
 
   private setIsLoggedIn(): void {
-    this.isLoggedIn$ = this.authService.getUser$().pipe(
-      map((user) => user !== null),
-      tap(() => this.setSidenav())
-    );
+    this.authService.getUser$().subscribe((user) => {
+      console.log('user changed');
+      console.log(user);
+
+      this.isLoggedIn = user !== null;
+      this.setSidenav();
+    });
   }
 
   private setSidenav(): void {

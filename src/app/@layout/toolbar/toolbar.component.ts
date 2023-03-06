@@ -12,7 +12,7 @@ import { AuthCoreService } from 'src/app/views/auth/services/auth-core.service';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  user$: Observable<User | null>;
+  user: User | null;
 
   constructor(
     private authService: AuthCoreService,
@@ -21,14 +21,20 @@ export class ToolbarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.user$ = this.authService.getUser$();
+    this.setUser();
   }
 
-  handleLogout() {
+  handleLogout(): void {
     this.dialog.open(LogoutDialogComponent);
   }
 
-  handleSidenavToggle() {
+  handleSidenavToggle(): void {
     this.navigationService.toggleSidenav();
+  }
+
+  private setUser(): void {
+    this.authService.getUser$().subscribe((user) => {
+      this.user = user;
+    });
   }
 }
