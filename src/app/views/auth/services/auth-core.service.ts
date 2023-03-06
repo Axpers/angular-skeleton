@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { UserLoginRequest } from '../models/auth.model';
@@ -55,10 +55,7 @@ export class AuthCoreService {
   }
 
   isLoggedIn(): boolean {
-    return (
-      localStorage.getItem(this.accessTokenKey) !== null &&
-      localStorage.getItem(this.accessTokenKey) !== undefined
-    );
+    return this.user$.value !== null;
   }
 
   private setUser(): void {

@@ -29,9 +29,7 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (this.authService.isLoggedIn()) {
-      this.navigationService.navigateToHome();
-    }
+    this.navigateHomeIfUserAlreadyLoggedIn();
   }
 
   handleLogin(): void {
@@ -44,5 +42,11 @@ export class LoginComponent implements OnInit {
     };
 
     this.authService.login(credentials);
+  }
+
+  private navigateHomeIfUserAlreadyLoggedIn() {
+    if (this.authService.isLoggedIn()) {
+      this.navigationService.navigateToHome();
+    }
   }
 }

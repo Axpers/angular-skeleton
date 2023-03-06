@@ -25,9 +25,6 @@ export class LayoutComponent implements OnInit {
 
   private setIsLoggedIn(): void {
     this.authService.getUser$().subscribe((user) => {
-      console.log('user changed');
-      console.log(user);
-
       this.isLoggedIn = user !== null;
       this.setSidenav();
     });
