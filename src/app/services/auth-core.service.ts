@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { NavigationService } from 'src/app/services/navigation.service';
-import { UserLoginRequest } from '../models/auth.model';
+import { UserLoginRequest } from '../views/auth/models/auth.model';
 import { AuthApiService } from './auth-api.service';
 
 @Injectable({ providedIn: 'root' })

@@ -1,6 +1,6 @@
 import { MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit } from '@angular/core';
-import { AuthCoreService } from 'src/app/views/auth/services/auth-core.service';
+import { AuthCoreService } from 'src/app/services/auth-core.service';
 
 @Component({
   selector: 'app-logout-dialog',

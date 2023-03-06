@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 
 import { NavigationService } from '../services/navigation.service';
-import { AuthCoreService } from '../views/auth/services/auth-core.service';
+import { AuthCoreService } from '../services/auth-core.service';
 
 @Component({
   selector: 'app-layout',

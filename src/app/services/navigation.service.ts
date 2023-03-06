@@ -8,7 +8,9 @@ export interface NavigationItem {
   link: string;
 }
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NavigationService {
   private navigationItems: NavigationItem[];
   private sidenav: MatSidenav;

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AccessTokenResponse, UserLoginRequest } from '../models/auth.model';
+import { AccessTokenResponse, UserLoginRequest } from '../views/auth/models/auth.model';
 import { environment } from 'src/environments/environment';
 import { firstValueFrom } from 'rxjs';
 

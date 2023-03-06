@@ -8,8 +8,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { LogoutDialogComponent } from './toolbar/logout-dialog/logout-dialog.component';
 
-import { NavigationService } from '../services/navigation.service';
-
 @NgModule({
   declarations: [
     LayoutComponent,
@@ -18,7 +16,6 @@ import { NavigationService } from '../services/navigation.service';
     LogoutDialogComponent,
   ],
   imports: [CommonModule, RouterModule, SharedModule],
-  providers: [NavigationService],
   exports: [LayoutComponent],
 })
 export class LayoutModule {}

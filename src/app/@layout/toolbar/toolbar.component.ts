@@ -4,7 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LogoutDialogComponent } from './logout-dialog/logout-dialog.component';
 import { NavigationService } from 'src/app/services/navigation.service';
 import { Observable } from 'rxjs';
-import { AuthCoreService } from 'src/app/views/auth/services/auth-core.service';
+import { AuthCoreService } from 'src/app/services/auth-core.service';
 
 @Component({
   selector: 'layout-toolbar',
