@@ -31,8 +31,6 @@ export class AuthCoreService {
   }
 
   login(credentials: UserLoginRequest): void {
-    console.log('logging called');
-
     localStorage.setItem(this.accessTokenKey, credentials.name);
 
     // const token = await this.apiService.login(credentials);
