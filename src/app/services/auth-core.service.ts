@@ -31,7 +31,7 @@ export class AuthCoreService {
   }
 
   login(credentials: UserLoginRequest): void {
-    localStorage.setItem(this.accessTokenKey, credentials.name);
+    localStorage.setItem(this.accessTokenKey, credentials.email);
 
     // const token = await this.apiService.login(credentials);
     // console.log(token);
@@ -42,7 +42,7 @@ export class AuthCoreService {
 
     this.user$.next({
       id: 1,
-      name: credentials.name,
+      name: credentials.email,
     });
 
     this.navigationService.navigateToHome();

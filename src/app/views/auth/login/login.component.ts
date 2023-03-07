@@ -11,9 +11,9 @@ import { AuthCoreService } from '../../../services/auth-core.service';
 })
 export class LoginComponent implements OnInit {
   loginFormGroup = new FormGroup({
-    name: new FormControl('', {
+    email: new FormControl('', {
       nonNullable: true,
-      validators: [Validators.required],
+      validators: [Validators.required, Validators.email],
     }),
     password: new FormControl('', {
       nonNullable: true,
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
       return;
     }
     const credentials: UserLoginRequest = {
-      name: this.loginFormGroup.value.name!,
+      email: this.loginFormGroup.value.email!,
       password: this.loginFormGroup.value.password!,
     };
 
