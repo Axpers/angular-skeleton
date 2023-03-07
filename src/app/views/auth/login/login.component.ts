@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     this.navigateHomeIfUserAlreadyLoggedIn();
   }
 
-  handleLogin(): void {
+  async handleLogin(): Promise<void> {
     if (!this.loginFormGroup.valid) {
       return;
     }
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       password: this.loginFormGroup.value.password!,
     };
 
-    this.authService.login(credentials);
+    await this.authService.login(credentials);
   }
 
   private navigateHomeIfUserAlreadyLoggedIn() {

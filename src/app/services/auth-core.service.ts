@@ -30,22 +30,25 @@ export class AuthCoreService {
     this.user$.next(null);
   }
 
-  login(credentials: UserLoginRequest): void {
+  async login(credentials: UserLoginRequest): Promise<void> {
     localStorage.setItem(this.accessTokenKey, credentials.email);
 
-    // const token = await this.apiService.login(credentials);
-    // console.log(token);
+    try {
+      const token = await this.apiService.login(credentials);
 
-    // handle login failed case
+      // fetch user with token
+      this.user$.next({
+        id: 1,
+        name: credentials.email,
+      });
 
-    // get user with token
+      this.navigationService.navigateToHome();
+    } catch (error) {
+      // handle login failed case
+      console.log(error);
 
-    this.user$.next({
-      id: 1,
-      name: credentials.email,
-    });
-
-    this.navigationService.navigateToHome();
+      // Error message
+    }
   }
 
   getUser$(): BehaviorSubject<User | null> {
